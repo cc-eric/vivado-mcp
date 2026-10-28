@@ -1,0 +1,19 @@
+{
+  "project_id": "vivado-mcp",
+  "kind": "native-host",
+  "notes": "Installed on Windows 168 (JC) for remote use from the NAS: each version gets its own venv under releases\\<commit>, the junction 'current' points at the live one, and NAS MCP clients launch it over SSH stdio (umtea-state/v4/bin/vivado-mcp-remote). Health = MCP initialize handshake through that path. 'vivado-mcp install' (Vivado GUI startup hook) is not run: remote use has no desktop session.",
+  "target": {
+    "host": "192.168.31.168",
+    "user": "administrator",
+    "ssh_key": "/run/umtea-v4/vivado_windows168_ed25519",
+    "known_hosts": "/run/umtea-v4/known_hosts",
+    "root": "D:\\UMTEA\\VivadoMCP",
+    "python": "C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "entry": "vivado-mcp"
+  },
+  "build": { "image": "python:3.12-slim-bookworm" },
+  "test": ["python -m pytest -q -p no:cacheprovider --junitxml=$V4_JUNIT"],
+  "skip_paths": ["docs/", ".github/", "*.md", "deploy.yaml"],
+  "health": { "window_seconds": 300, "stable_seconds": 30 },
+  "migration": "compatible"
+}
