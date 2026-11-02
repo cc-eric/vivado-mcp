@@ -1,0 +1,14 @@
+{
+  "schema": "umtea-v4.1-release-identity/v1",
+  "project": "vivado-mcp",
+  "distribution": "vivado-mcp",
+  "version": "0.3.29",
+  "proposed_tag": "v0.3.29",
+  "publication_destination": "testpypi",
+  "previous_committed_native_host_sha": "4116a6520dec3a4a24d73f3eeea799fa03935cd3",
+  "retired_hosted_release_workflows_in_parent": "2c6eb7479ee57a7a5dc89d4781e76bc24a6f3310",
+  "release_action": "Require the native UMTEA V4.1 single deployer to build, test, deploy and verify this workflow-free source tree before tag issuance",
+  "automatic_publication_authorized": false,
+  "official_pypi_authorized": false,
+  "note": "Source-only release identity marker; does not alter Python runtime, version metadata, deploy.yaml or any authorization. Git tag and TestPyPI enablement remain separately gated."
+}
