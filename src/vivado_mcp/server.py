@@ -18,7 +18,7 @@ from dataclasses import dataclass
 
 from mcp.server import MCPServer
 
-from vivado_mcp import prompts as _prompts
+from vivado_mcp import __version__, prompts as _prompts
 from vivado_mcp.config import find_vivado
 from vivado_mcp.vivado.session import VivadoSession
 from vivado_mcp.vivado.session_manager import SessionManager
@@ -83,6 +83,7 @@ async def app_lifespan(server: MCPServer) -> AsyncIterator[AppContext]:
 # 创建 MCPServer 实例
 mcp = MCPServer(
     "vivado-mcp",
+    version=__version__,
     lifespan=app_lifespan,
 )
 
