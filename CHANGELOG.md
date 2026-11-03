@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [0.3.30] — 2026-11-03
+
+- 修复 MCP `initialize` 响应中 `serverInfo.version` 为空：服务端从已安装的 `vivado-mcp` 分发元数据读取实际版本，不维护第二份硬编码常量。
+- 新增 stdio 协议回归断言，要求服务端上报版本与当前 Python 包版本一致。
+- 不修改 Vivado 会话管理、工具注册、客户端配置或自动发布安全策略。本候选版本仅允许在既有 UMTEA V4.1 可信 CI、Windows 168 健康读回和精确版本标签门禁全部通过后发布到 TestPyPI；正式 PyPI 不授权。
+
 ## [0.3.26] — 2026-09-22
 
 > 本版提供 32 个 MCP 工具、11 个 Prompt 和 5 份随包分发的 Skills，
