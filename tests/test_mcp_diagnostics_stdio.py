@@ -5,6 +5,7 @@ import sys
 from pathlib import Path
 
 import pytest
+import vivado_mcp
 from mcp.client.session import ClientSession
 from mcp.client.stdio import StdioServerParameters, stdio_client
 
@@ -24,7 +25,10 @@ async def test_offline_diagnostics_over_stdio(tmp_path):
         async with ClientSession(
             *streams, read_timeout_seconds=30,
         ) as client:
-            await client.initialize()
+            initialized = await client.initialize()
+            # Client-visible server version must match the installed wheel metadata.
+            assert initialized.server_info.name == "vivado-mcp"
+            assert initialized.server_info.version == vivado_mcp.__version__
             registered = {tool.name: tool for tool in (await client.list_tools()).tools}
             assert "query_waveform" in registered
             assert "baseline_file" in registered["get_timing_report"].input_schema["properties"]
